@@ -18,6 +18,14 @@ force-app/main/default/
   classes/   LeaveRequestController, LeaveRequestControllerTest
   lwc/       leaveManagement (container), leaveRequestForm, leaveRequestList
   objects/   Leave_Request__c (fields, validation rule)
+
+<img width="1598" height="740" alt="WhatsApp Image 2026-11-15 at 1 00 08 AM" src="https://github.com/user-attachments/assets/13dc8d58-2c73-4398-9133-b38212343cb1" />
+
+<img width="1600" height="899" alt="WhatsApp Image 2026-11-15 at 1 00 19 AM" src="https://github.com/user-attachments/assets/63f54a3c-35c3-4401-9b75-1d098f425a80" />
+
+<img width="1600" height="742" alt="WhatsApp Image 2026-11-15 at 1 00 41 AM (1)" src="https://github.com/user-attachments/assets/a346cc9e-fb3c-440e-99fb-97e1dda9d5d0" />
+
+
 ```
 
 ## Data model: Leave_Request__c
