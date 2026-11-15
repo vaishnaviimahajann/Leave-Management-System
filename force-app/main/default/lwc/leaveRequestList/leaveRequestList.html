@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="My Leave Requests" icon-name="standard:note">
+        <div class="slds-p-horizontal_medium">
+            <div class="slds-grid slds-gutters slds-wrap slds-m-bottom_small">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <lightning-input type="search" label="Search" value={searchKey}
+                        placeholder="Search by number, type, reason or comments"
+                        onchange={handleSearch}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <lightning-combobox label="Status" value={statusFilter} options={statusOptions}
+                        onchange={handleStatusChange}></lightning-combobox>
+                </div>
+            </div>
+
+            <div class="slds-m-bottom_small">
+                <lightning-badge label={pendingLabel}></lightning-badge>
+                <lightning-badge label={approvedLabel} class="slds-m-left_x-small"></lightning-badge>
+                <lightning-badge label={rejectedLabel} class="slds-m-left_x-small"></lightning-badge>
+            </div>
+
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+
+            <template if:true={error}>
+                <div class="slds-text-color_error" role="alert">{error}</div>
+            </template>
+
+            <template if:true={hasRows}>
+                <lightning-datatable key-field="Id" data={filteredRequests} columns={columns}
+                    hide-checkbox-column onrowaction={handleRowAction}></lightning-datatable>
+            </template>
+
+            <template if:false={hasRows}>
+                <template if:false={isLoading}>
+                    <p class="slds-text-align_center slds-p-around_medium">No leave requests found.</p>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

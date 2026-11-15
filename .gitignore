@@ -1,0 +1,7 @@
+# Salesforce CLI cache (do not upload)
+.sf/
+.sfdx/
+node_modules/
+.vscode/settings.json
+*.log
+.DS_Store

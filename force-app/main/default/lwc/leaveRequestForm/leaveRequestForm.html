@@ -1,0 +1,42 @@
+<template>
+    <lightning-card title="Apply for Leave" icon-name="standard:event">
+        <div class="slds-p-horizontal_medium">
+            <lightning-combobox name="leaveType" label="Leave Type" value={leaveType}
+                options={leaveTypeOptions} placeholder="Select leave type" required
+                onchange={handleChange}></lightning-combobox>
+
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <lightning-input type="date" name="startDate" label="Start Date"
+                        value={startDate} required onchange={handleChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <lightning-input type="date" name="endDate" label="End Date"
+                        value={endDate} required onchange={handleChange}></lightning-input>
+                </div>
+            </div>
+
+            <lightning-textarea name="reason" label="Reason" value={reason}
+                maxlength="1000" onchange={handleChange}></lightning-textarea>
+
+            <p class="duration slds-m-top_small">
+                Leave Duration: <strong>{durationText}</strong>
+            </p>
+
+            <lightning-input type="checkbox" name="submitApproval" label="Submit for approval immediately"
+                checked={submitApproval} onchange={handleChange}></lightning-input>
+
+            <template if:true={errorMessage}>
+                <div class="slds-text-color_error slds-m-top_small" role="alert">{errorMessage}</div>
+            </template>
+        </div>
+        <div slot="footer">
+            <lightning-button label="Clear" onclick={resetForm} class="slds-m-right_small"></lightning-button>
+            <lightning-button variant="brand" label="Submit Request" onclick={handleSubmit}
+                disabled={isSaving}></lightning-button>
+        </div>
+        <template if:true={isSaving}>
+            <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+        </template>
+    </lightning-card>
+</template>
